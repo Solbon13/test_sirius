@@ -1,15 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
-
-const WrapperCard = styled.div`
-width: 708.31px;
-height: 220.5px;
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 48.2498px;
-justify-content: center;
-display: flex;
-`
+import { WrapperCard } from './WrapperCard'
 
 const Title = styled.div`
 font-style: normal;
@@ -25,6 +16,7 @@ margin-top: 32px;
 
 const WrapperRange = styled.div`
 width: 533px;
+margin: 0 auto;
 `
 
 const WrapperLabel = styled.div`
@@ -59,29 +51,36 @@ const InputField = styled.input`
    }
 `
 
-const Card = (props) => {
+interface ICardProps {
+    onAction: (value) => void,
+    title: string,
+    labelArray: Array<number>,
+    step: string,
+    position: number
+}
 
-    const onAction = (e: React.ChangeEvent<HTMLInputElement>) => {
-        console.log(e)
-        props.onAction(Number(e.target.value))
+const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position}) => {
+
+    const onClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onAction(Number(e.target.value))
     }
 
     return (
         <div>
             <WrapperCard>
                 <WrapperRange>
-                    <Title>{props.title}</Title>
+                    <Title>{title}</Title>
                     <WrapperLabel>
                         {
-                            props.labelArray.map((item) => <Label key={item}>{item}</Label>)
+                            labelArray.map((item) => <Label key={item}>{item}</Label>)
                         }
                     </WrapperLabel>
                     <InputField type="range"
-                        min={props.labelArray[0]}
-                        max={props.labelArray[props.labelArray.length - 1]}
-                        step={props.step}
-                        value={props.position}
-                        onChange={onAction}
+                        min={labelArray[0]}
+                        max={labelArray[labelArray.length - 1]}
+                        step={step}
+                        value={position}
+                        onChange={onClick}
                         ></InputField>
                 </WrapperRange>
             </WrapperCard>

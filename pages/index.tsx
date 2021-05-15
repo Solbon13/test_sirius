@@ -9,7 +9,7 @@ import { useTypedSelector } from '../hooks/useTypedSelector'
 import Link from 'next/link'
 
 const Wrapper = styled.div`
-  background: #EEF5FF;
+  background: #F7F9FF;
   min-height: 100vh;
   width: 100%;
 `
@@ -28,7 +28,6 @@ export default function Home() {
   const { wordsCount, lettersCount, distance, distanceInc, speed } = useTypedSelector(state => state.games)
   const { setWordsCount, setLettersCount, setDistanceCount, setDistanceIncCount, setSpeed } = useActions()
 
-  console.log(wordsCount, lettersCount, distance, distanceInc, speed)
   return (
     <div>
       {/* <Head>

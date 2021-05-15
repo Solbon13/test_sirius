@@ -1,13 +1,6 @@
 import styled from '@emotion/styled'
 import React from 'react'
-
-const WrapperCard = styled.div`
-width: 708.31px;
-height: 220.5px;
-background: #FFFFFF;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 48.2498px;
-`
+import { WrapperCard } from './WrapperCard'
 
 const WrapperText = styled.div`
 justify-content: center;
@@ -56,11 +49,15 @@ font-style: normal;
 font-weight: bold;
 font-size: 125px;
 line-height: 56px;
-
 color: #000000;
 `
 
-const CardText = (props) => {
+interface ICardProps {
+    onAction: (value) => void,
+    position: number
+}
+
+const CardText: React.FC<ICardProps> = ({position, onAction}) => {
 
     return (
         <div>
@@ -68,13 +65,13 @@ const CardText = (props) => {
                 <WrapperText>
                     <Title>Скорость</Title>
                     <InputField
-                    defaultValue={props.position}
+                    defaultValue={position}
                     />
                     <Title>сек.</Title>
                 </WrapperText>
                 <WrapperBtn>
-                    <Btn onClick={() => props.onAction(props.position - 1)}>-</Btn>
-                    <Btn onClick={() => props.onAction(props.position + 1)}>+</Btn>
+                    <Btn onClick={() => onAction(position - 1)}>-</Btn>
+                    <Btn onClick={() => onAction(position + 1)}>+</Btn>
                 </WrapperBtn>
             </WrapperCard>
         </div>

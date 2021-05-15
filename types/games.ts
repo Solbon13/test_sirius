@@ -4,7 +4,7 @@ export interface GamesState {
     distance: number,
     distanceInc: number,
     speed: number,
-    wordsArray: []
+    wordsArray: Array<string>
 }
 
 export enum GamesActionTypes {

@@ -1,22 +1,22 @@
 import { GamesAction, GamesActionTypes } from "../../types/games";
 
-export const wordsCount = (payload: number): GamesAction => {
+export const setWordsCount = (payload: number): GamesAction => {
     return {type: GamesActionTypes.SET_WORDS_COUNT, payload}
 }
 
-export const lettersCount = (payload: number): GamesAction => {
+export const setLettersCount = (payload: number): GamesAction => {
     return {type: GamesActionTypes.SET_LETTERS_COUNT, payload}
 }
 
-export const distanceCount = (payload: number): GamesAction => {
+export const setDistanceCount = (payload: number): GamesAction => {
     return {type: GamesActionTypes.SET_DISTANCE, payload}
 }
 
-export const distanceIncCount = (payload: number): GamesAction => {
+export const setDistanceIncCount = (payload: number): GamesAction => {
     return {type: GamesActionTypes.SET_DISTANCE_INC, payload}
 }
 
-export const speedCount = (payload: number): GamesAction => {
+export const setSpeed = (payload: number): GamesAction => {
     return {type: GamesActionTypes.SET_SPEED, payload}
 }
 

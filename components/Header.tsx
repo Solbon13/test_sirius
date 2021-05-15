@@ -20,10 +20,10 @@ display: flex;
 width: 100%;
 margin-bottom: 30px;
 `
-const Header = () => {
+const Header = (props) => {
     return (
         <Wrapper>
-            <H1>Тренажер «Поле зрения»</H1>
+            <H1>{props.title}</H1>
             <Image
                 src="/images/logo.png"
                 alt="Logo"

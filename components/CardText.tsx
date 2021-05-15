@@ -52,6 +52,12 @@ height: 92px;
 background: #FDD207;
 transform: rotate(-180deg);
 border-radius: 10px;
+font-style: normal;
+font-weight: bold;
+font-size: 125px;
+line-height: 56px;
+
+color: #000000;
 `
 
 const CardText = (props) => {
@@ -62,7 +68,7 @@ const CardText = (props) => {
                 <WrapperText>
                     <Title>Скорость</Title>
                     <InputField
-                    value={props.position}
+                    defaultValue={props.position}
                     />
                     <Title>сек.</Title>
                 </WrapperText>

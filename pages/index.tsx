@@ -35,7 +35,7 @@ export default function Home() {
         <title>Поле зрения</title>
       </Head> */}
       <Wrapper>
-        <Header />
+        <Header title='Тренажер «Поле зрения»'/>
         <WrapperBody>
           <Card
             title='Сколько слов'

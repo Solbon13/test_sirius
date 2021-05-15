@@ -44,7 +44,19 @@ color: #000000;
 `
 
 const InputField = styled.input`
-width: 100%;
+-webkit-appearance: none;
+    width: 100%;
+    height: 23px;
+    cursor: pointer;
+    background: #FDD207;
+    border-radius: 50px;
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 43.91px;
+      height: 43.91px;
+      background: radial-gradient(#0E0C0B 30%, #FDD207 20%);
+      border-radius: 50%;
+   }
 `
 
 const Card = (props) => {

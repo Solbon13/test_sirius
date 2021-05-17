@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { WrapperCard } from './WrapperCard'
 
 const Title = styled.div`
@@ -35,28 +35,29 @@ align-items: center;
 color: #000000;
 `
 
-interface YourProps {
-    invalid: boolean
+type CssProps = {
+    val: number
   }
 
-const InputField = styled.input`
+
+const InputField: FC<any> = styled.input`
 -webkit-appearance: none;
   -moz-appearance: none;
   width: 100%;
   outline: 0;
   height: 23px;
   border-radius: 50px;
-  background: ${(props) =>
-    `linear-gradient(to right, #FDD207 0%, #FDD207 ${props.theme}%, #fff ${props.theme}%, #fff 100%);`};
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+  background: ${(props: CssProps) =>
+    `linear-gradient(to right, #FDD207 0%, #FDD207 ${props.val}%, #fff ${props.val}%, #fff 100%);`};
+  
 
   ::-webkit-slider-thumb {
     -webkit-appearance: none;
     width: 43.91px;
-      height: 43.91px;
+    height: 43.91px;
     background-image: radial-gradient(circle, #0E0C0B 40%, #FDD207 45%);
     border-radius: 50%;
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+    
   }
 
   ::-moz-range-thumb {
@@ -65,7 +66,7 @@ const InputField = styled.input`
     -moz-appearance: none;
     background-image: radial-gradient(circle, #0E0C0B 40%, #FDD207 45%);
     border-radius: 50%;
-    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+    
   }
    
 `
@@ -103,7 +104,7 @@ const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position
                         max={labelArray[labelArray.length - 1]}
                         step={step}
                         value={position}
-                        theme={value1}
+                        val={value1}
                         onChange={onClick}
                         ></InputField>
                 </WrapperRange>

@@ -1,12 +1,12 @@
 import styled from '@emotion/styled'
 import { Head } from 'next/document'
-import Button from '../components/Button'
 import Card from '../components/Card'
 import CardText from '../components/CardText'
 import Header from '../components/Header'
 import { useActions } from '../hooks/useActions'
 import { useTypedSelector } from '../hooks/useTypedSelector'
 import Link from 'next/link'
+import { ButtonEmotion } from '../components/ButtonEmotion'
 
 const Wrapper = styled.div`
   background: #F7F9FF;
@@ -65,7 +65,7 @@ export default function Home() {
             onAction={setSpeed} />
           <Link href='/games'>
             <a>
-          <Button />
+          <ButtonEmotion>Старт</ButtonEmotion>
           </a>
           </Link>
         </WrapperBody>

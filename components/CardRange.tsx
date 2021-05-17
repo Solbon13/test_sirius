@@ -1,43 +1,53 @@
+import { css } from '@emotion/react'
 import styled from '@emotion/styled'
 import React, { FC, useState } from 'react'
 import { WrapperCard } from './WrapperCard'
 
 const Title = styled.div`
-font-style: normal;
-font-weight: bold;
-font-size: 45px;
-line-height: 57px;
-display: flex;
-align-items: center;
-color: #371548;
-justify-content: center;
-margin-top: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 57px;
+    display: flex;
+    align-items: center;
+    color: #371548;
+    justify-content: center;
+    margin-top: 32px;
 `
 
 const WrapperRange = styled.div`
-width: 533px;
-margin: 0 auto;
+    width: 533px;
+    margin: 0 auto;
 `
 
 const WrapperLabel = styled.div`
-display: flex;
-width: 100%;
-justify-content: space-between;
-`
+    display: flex;
+    width: 100%;
+    `
+    // justify-content: space-between;
 
-const Label = styled.div`
-font-style: normal;
-font-weight: bold;
-font-size: 38.5998px;
-line-height: 45px;
-display: flex;
-align-items: center;
-color: #000000;
-`
+type CssPropsLabel = {
+    marginleft: number
+} & React.HTMLProps<HTMLDivElement>
+
+const Label: FC<CssPropsLabel> = ({ children, marginleft }) => {
+    return <div css={css`
+        font-style: normal;
+        font-weight: bold;
+        font-size: 38.5998px;
+        line-height: 45px;
+        display: flex;
+        align-items: center;
+        color: #000000;
+        width: ${marginleft}%;
+    `}>
+        {children}
+    </div>
+}
 
 type CssProps = {
     val: number
-  } & React.HTMLProps<HTMLInputElement>
+} & React.HTMLProps<HTMLInputElement>
 
 const InputField: FC<CssProps> = styled.input`
 -webkit-appearance: none;
@@ -47,7 +57,7 @@ const InputField: FC<CssProps> = styled.input`
   height: 23px;
   border-radius: 50px;
   background: ${(props: CssProps) =>
-    `linear-gradient(to right, #FDD207 0%, #FDD207 ${props.val}%, #fff ${props.val}%, #fff 100%);`};
+        `linear-gradient(to right, #FDD207 0%, #FDD207 ${props.val}%, #fff ${props.val}%, #fff 100%);`};
   
 
   ::-webkit-slider-thumb {
@@ -78,12 +88,12 @@ interface ICardProps {
     position: number
 }
 
-const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position}) => {
+const CardRange: React.FC<ICardProps> = ({ onAction, title, labelArray, step, position }) => {
 
-    const [value1, setValue] = useState((100/ labelArray.length * labelArray.indexOf(position) + 50 / labelArray.length));
+    const [value1, setValue] = useState((100 / labelArray.length * labelArray.indexOf(position) + 50 / labelArray.length));
 
     const onClick = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setValue(100/ labelArray.length * labelArray.indexOf(Number(e.target.value)) + 50 / labelArray.length)
+        setValue(100 / labelArray.length * labelArray.indexOf(Number(e.target.value)) + 50 / labelArray.length)
         onAction(Number(e.target.value))
     }
 
@@ -94,8 +104,9 @@ const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position
                     <Title>{title}</Title>
                     <WrapperLabel>
                         {
-                            labelArray.map((item) => <Label key={item}>{item}</Label>)
+                            labelArray.map((item, index) => <Label key={item} marginleft={(100 / labelArray.length)}>{item}</Label>)
                         }
+
                     </WrapperLabel>
                     <InputField type="range"
                         min={labelArray[0]}
@@ -104,11 +115,13 @@ const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position
                         value={position}
                         val={value1}
                         onChange={onClick}
-                        ></InputField>
+                        list="steplist"
+                    ></InputField>
+
                 </WrapperRange>
             </WrapperCard>
         </div>
     )
 }
 
-export default Card
+export default CardRange

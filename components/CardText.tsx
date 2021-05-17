@@ -3,53 +3,53 @@ import React from 'react'
 import { WrapperCard } from './WrapperCard'
 
 const WrapperText = styled.div`
-justify-content: center;
-display: flex;
+    justify-content: center;
+    display: flex;
 `
 
 const WrapperBtn = styled.div`
-justify-content: center;
-display: flex;
-margin-top: 15px;
+    justify-content: center;
+    display: flex;
+    margin-top: 15px;
 `
 
 const Title = styled.div`
-font-style: normal;
-font-weight: bold;
-font-size: 45px;
-line-height: 57px;
-display: flex;
-align-items: center;
-color: #371548;
-justify-content: center;
-margin-top: 32px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 45px;
+    line-height: 57px;
+    display: flex;
+    align-items: center;
+    color: #371548;
+    justify-content: center;
+    margin-top: 32px;
 `
 
 const InputField = styled.input`
-width: 120px;
-background: #FFFFFF;
-border: 1px solid #000000;
-box-sizing: border-box;
-border-radius: 19.9968px;
-font-style: normal;
-font-weight: bold;
-font-size: 47.9924px;
-line-height: 56px;
-color: #000000;
-text-align: center;
+    width: 120px;
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 19.9968px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 47.9924px;
+    line-height: 56px;
+    color: #000000;
+    text-align: center;
 `
 
 const Btn = styled.button`
-width: 92px;
-height: 92px;
-background: #FDD207;
-transform: rotate(-180deg);
-border-radius: 10px;
-font-style: normal;
-font-weight: bold;
-font-size: 125px;
-line-height: 56px;
-color: #000000;
+    width: 92px;
+    height: 92px;
+    background: #FDD207;
+    transform: rotate(-180deg);
+    border-radius: 10px;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 125px;
+    line-height: 56px;
+    color: #000000;
 `
 
 interface ICardProps {

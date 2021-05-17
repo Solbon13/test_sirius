@@ -1,6 +1,6 @@
 import styled from '@emotion/styled'
 import { Head } from 'next/document'
-import Card from '../components/Card'
+import CardRange from '../components/CardRange'
 import CardText from '../components/CardText'
 import Header from '../components/Header'
 import { useActions } from '../hooks/useActions'
@@ -36,25 +36,25 @@ export default function Home() {
       <Wrapper>
         <Header title='Тренажер «Поле зрения»'/>
         <WrapperBody>
-          <Card
+          <CardRange
             title='Сколько слов'
             labelArray={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
             position={wordsCount}
             step='1'
             onAction={setWordsCount} />
-          <Card
+          <CardRange
             title='Стартовое расстояние'
             labelArray={[5, 10, 15, 20, 25, 30, 35, 40]}
             position={distance}
             step='5'
             onAction={setDistanceCount} />
-          <Card
+          <CardRange
             title='Сколько букв в словах'
             labelArray={[3, 4, 5, 6, 7, 8, 9, 10, 11, 12]}
             position={lettersCount}
             step='1'
             onAction={setLettersCount} />
-          <Card
+          <CardRange
             title='Увеличение расстояния'
             labelArray={[5, 10, 15, 20, 25, 30, 35, 40]}
             position={distanceInc}

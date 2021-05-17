@@ -1,5 +1,5 @@
 import styled from '@emotion/styled'
-import React from 'react'
+import React, { useState } from 'react'
 import { WrapperCard } from './WrapperCard'
 
 const Title = styled.div`
@@ -35,20 +35,39 @@ align-items: center;
 color: #000000;
 `
 
+interface YourProps {
+    invalid: boolean
+  }
+
 const InputField = styled.input`
 -webkit-appearance: none;
-    width: 100%;
-    height: 23px;
-    cursor: pointer;
-    background: #FDD207;
-    border-radius: 50px;
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      width: 43.91px;
+  -moz-appearance: none;
+  width: 100%;
+  outline: 0;
+  height: 23px;
+  border-radius: 50px;
+  background: ${(props) =>
+    `linear-gradient(to right, #FDD207 0%, #FDD207 ${props.theme}%, #fff ${props.theme}%, #fff 100%);`};
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.5);
+
+  ::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 43.91px;
       height: 43.91px;
-      background: radial-gradient(#0E0C0B 30%, #FDD207 20%);
-      border-radius: 50%;
-   }
+    background-image: radial-gradient(circle, #0E0C0B 40%, #FDD207 45%);
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+  }
+
+  ::-moz-range-thumb {
+    width: 43.91px;
+    height: 43.91px;
+    -moz-appearance: none;
+    background-image: radial-gradient(circle, #0E0C0B 40%, #FDD207 45%);
+    border-radius: 50%;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.5);
+  }
+   
 `
 
 interface ICardProps {
@@ -61,7 +80,11 @@ interface ICardProps {
 
 const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position}) => {
 
+    const [value1, setValue] = useState((100/ labelArray.length * labelArray.indexOf(position) + 50 / labelArray.length));
+
     const onClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setValue(100/ labelArray.length * labelArray.indexOf(Number(e.target.value)) + 50 / labelArray.length)
+        console.log(e.target.value, labelArray.indexOf(Number(e.target.value)))
         onAction(Number(e.target.value))
     }
 
@@ -80,6 +103,7 @@ const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position
                         max={labelArray[labelArray.length - 1]}
                         step={step}
                         value={position}
+                        theme={value1}
                         onChange={onClick}
                         ></InputField>
                 </WrapperRange>

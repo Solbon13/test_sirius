@@ -66,12 +66,14 @@ const CardText: React.FC<ICardProps> = ({position, onAction}) => {
                     <Title>Скорость</Title>
                     <InputField
                     defaultValue={position}
+                    type="number"
+                    step='0.5'
                     />
                     <Title>сек.</Title>
                 </WrapperText>
                 <WrapperBtn>
-                    <Btn onClick={() => onAction(position - 1)}>-</Btn>
-                    <Btn onClick={() => onAction(position + 1)}>+</Btn>
+                    <Btn onClick={() => position > 0.5 && onAction(position - 0.5)}>-</Btn>
+                    <Btn onClick={() => onAction(position + 0.5)}>+</Btn>
                 </WrapperBtn>
             </WrapperCard>
         </div>

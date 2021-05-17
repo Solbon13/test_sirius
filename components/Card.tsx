@@ -37,10 +37,9 @@ color: #000000;
 
 type CssProps = {
     val: number
-  }
+  } & React.HTMLProps<HTMLInputElement>
 
-
-const InputField: FC<any> = styled.input`
+const InputField: FC<CssProps> = styled.input`
 -webkit-appearance: none;
   -moz-appearance: none;
   width: 100%;
@@ -85,7 +84,6 @@ const Card: React.FC<ICardProps> = ({onAction, title, labelArray, step, position
 
     const onClick = (e: React.ChangeEvent<HTMLInputElement>) => {
         setValue(100/ labelArray.length * labelArray.indexOf(Number(e.target.value)) + 50 / labelArray.length)
-        console.log(e.target.value, labelArray.indexOf(Number(e.target.value)))
         onAction(Number(e.target.value))
     }
 
